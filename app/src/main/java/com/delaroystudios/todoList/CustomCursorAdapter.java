@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.delaroystudios.todolist;
+package com.delaroystudios.todoList;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -26,8 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.delaroystudios.todolist.R;
-import com.delaroystudios.todolist.data.TaskContract;
+import com.delaroystudios.todoList.data.TaskContract;
 
 
 /**

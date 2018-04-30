@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.delaroystudios.todolist">
+    package="com.delaroystudios.todoList">
 
     <application
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/notes_edit"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
         <!-- The manifest entry for the MainActivity -->
-        <activity android:name="com.delaroystudios.todolist.MainActivity">
+        <activity android:name="com.delaroystudios.todoList.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,17 +20,22 @@
             </intent-filter>
         </activity>
 
+        <!-- MainActivity -->
+        <activity
+            android:name="com.delaroystudios.todoList.MainActivity"
+            android:label="@string/main_activity_name" />
+
         <!-- AddTaskActivity -->
         <activity
-            android:name="com.delaroystudios.todolist.AddTaskActivity"
+            android:name="com.delaroystudios.todoList.AddTaskActivity"
             android:label="@string/add_task_activity_name" />
 
         <!-- Register the TaskContentProvider -->
         <!-- Set name, authorities, and exported attributes -->
         <!-- exported = false limits access to this ContentProvider to only this app -->
         <provider
-            android:name="com.delaroystudios.todolist.data.TaskContentProvider"
-            android:authorities="com.example.android.todolist"
+            android:name="com.delaroystudios.todoList.data.TaskContentProvider"
+            android:authorities="com.example.android.todoList"
             android:exported="false"/>
 
     </application>

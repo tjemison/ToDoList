@@ -14,13 +14,13 @@
 * limitations under the License.
 */
 
-package com.delaroystudios.todolist.data;
+package com.delaroystudios.todoList.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.delaroystudios.todolist.data.TaskContract.TaskEntry;
+import com.delaroystudios.todoList.data.TaskContract.TaskEntry;
 
 
 public class TaskDbHelper extends SQLiteOpenHelper {

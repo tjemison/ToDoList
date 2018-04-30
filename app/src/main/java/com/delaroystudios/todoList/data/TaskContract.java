@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.delaroystudios.todolist.data;
+package com.delaroystudios.todoList.data;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -32,7 +32,7 @@ public class TaskContract {
       */
 
     // The authority, which is how your code knows which Content Provider to access
-    public static final String AUTHORITY = "com.example.android.todolist";
+    public static final String AUTHORITY = "com.example.android.todoList";
 
     // The base content URI = "content://" + <authority>
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);

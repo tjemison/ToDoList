@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.delaroystudios.todolist;
+package com.delaroystudios.todoList;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -31,20 +31,21 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 
-import com.delaroystudios.todolist.R;
-import com.delaroystudios.todolist.data.TaskContract;
+import com.delaroystudios.todoList.data.TaskContract;
 
 
 public class MainActivity extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+        LoaderManager.LoaderCallbacks<Cursor>{
 
 
     // Constants for logging and referring to a unique loader
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int TASK_LOADER_ID = 0;
-
+    private static final String ADD_TASK_TAG = "AddTaskFragment Tag";
     // Member variables for the adapter and RecyclerView
     private CustomCursorAdapter mAdapter;
+    private AddTaskFragment addTaskFragment = new AddTaskFragment();
+    private SplashScreenActivity splashFragment = new SplashScreenActivity();
     RecyclerView mRecyclerView;
 
 
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // Set the RecyclerView to its corresponding view
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewTasks);
 
@@ -101,15 +101,14 @@ public class MainActivity extends AppCompatActivity implements
 
         /*
          Set the Floating Action Button (FAB) to its corresponding View.
-         Attach an OnClickListener to it, so that when it's clicked, a new intent will be created
-         to launch the AddTaskActivity.
+         Attach an OnClickListener to it, so that when it's clicked, a new AddTaskFragment will be accessible
          */
         FloatingActionButton fabButton = (FloatingActionButton) findViewById(R.id.fab);
 
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create a new intent to start an AddTaskActivity
+                // This is where we bring our AddTaskFragment to the foreground.
                 Intent addTaskIntent = new Intent(MainActivity.this, AddTaskActivity.class);
                 startActivity(addTaskIntent);
             }
@@ -122,6 +121,10 @@ public class MainActivity extends AppCompatActivity implements
         getSupportLoaderManager().initLoader(TASK_LOADER_ID, null, this);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 
     /**
      * This method is called after this activity has been paused or restarted.
@@ -135,7 +138,6 @@ public class MainActivity extends AppCompatActivity implements
         // re-queries for all tasks
         getSupportLoaderManager().restartLoader(TASK_LOADER_ID, null, this);
     }
-
 
     /**
      * Instantiates and returns a new AsyncTaskLoader with the given ID.
@@ -206,6 +208,7 @@ public class MainActivity extends AppCompatActivity implements
         // Update the data that the adapter uses to create ViewHolders
         mAdapter.swapCursor(data);
     }
+
 
 
     /**

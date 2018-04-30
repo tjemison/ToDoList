@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.delaroystudios.todolist.data;
+package com.delaroystudios.todoList.data;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
